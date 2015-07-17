@@ -80,7 +80,8 @@ Vagrant.configure(2) do |config|
 
   # Hostname
   #
-  config.vm.hostname = "pdc-env"
+  date_tag = system('date +%Y-%m-%d.%H-%M')
+  config.vm.hostname = "pdc-env.#{date_tag}"
 
   # Set session as not interactive, suppressing TTY (session env) errors
   # (may interfere with vagrant-exec plugin, which we're not using)

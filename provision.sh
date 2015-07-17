@@ -97,5 +97,5 @@ apt-get install -y \
 
 # Fix dependencies and remove unnecessary packages
 #
-apt-get install -f
-apt-get autoremove
+apt-get install -f -y
+apt-get autoremove -y

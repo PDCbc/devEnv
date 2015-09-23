@@ -23,7 +23,7 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-  [2774, 3002, 3003, 3004, 3005, 3006, 3007, 40000, 40001, 40002, 8080].each do |x|
+  [2774, 3002, 3003, 3004, 3005, 3006, 3007, 40000, 8080].each do |x|
     config.vm.network "forwarded_port", guest: x, host: x
   end
 
@@ -59,7 +59,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.cpus = 4
+    vb.cpus = 2
     vb.memory = 4096
   end
 
@@ -81,7 +81,7 @@ Vagrant.configure(2) do |config|
   # Hostname
   #
   date_tag = system('date +%Y-%m-%d.%H-%M')
-  config.vm.hostname = "pdc-env.#{date_tag}"
+  config.vm.hostname = "dev-env"
 
   # Set session as not interactive, suppressing TTY (session env) errors
   # (may interfere with vagrant-exec plugin, which we're not using)

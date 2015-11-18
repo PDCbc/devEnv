@@ -5,20 +5,6 @@
 set -e -o nounset
 
 
-# Create a list of subdirs (non-hidden) and run any Makefiles
-#
-cd /vagrant/
-PROJECTS=$(find . -maxdepth 1 -type d -not -name ".*")
-echo Project subdirectories found: $PROJECTS
-#
-for p in $PROJECTS
-do
-  cd $p
-  test ! -e Makefile || make                # Either no Makefile OR run Makefile
-  cd ..
-done
-
-
 # Vagrant SSH starts in the Vagrant (synchronized) folder
 #
 if (! grep --quiet 'cd /vagrant/' /home/vagrant/.bashrc )
@@ -99,3 +85,17 @@ apt-get install -y \
 #
 apt-get install -f -y
 apt-get autoremove -y
+
+
+# Create a list of subdirs (non-hidden) and run any Makefiles
+#
+cd /vagrant/
+PROJECTS=$(find . -maxdepth 1 -type d -not -name ".*")
+echo Project subdirectories found: $PROJECTS
+#
+for p in $PROJECTS
+do
+  cd $p
+  test ! -e Makefile || make                # Either no Makefile OR run Makefile
+  cd ..
+done

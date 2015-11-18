@@ -1,6 +1,7 @@
 # This repo only #
 ##################
 
+*/
 *.json
 *.xml
 *.tar

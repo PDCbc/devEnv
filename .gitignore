@@ -10,7 +10,8 @@
 *.zip
 *.rar
 .vagrant/
-stack/
+.directory
+./*/
 
 ########################
 ### GitHub Suggested ###

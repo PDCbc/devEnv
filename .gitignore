@@ -1,6 +1,7 @@
 # This repo only #
 ##################
 
+*/
 *.json
 *.xml
 *.tar
@@ -9,7 +10,8 @@
 *.zip
 *.rar
 .vagrant/
-stack/
+.directory
+./*/
 
 ########################
 ### GitHub Suggested ###

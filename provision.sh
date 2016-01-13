@@ -33,57 +33,14 @@ then
 fi
 
 
-# Configure .vimrc
-#
-if (! grep --quiet 'ca.pool.ntp.org' /home/vagrant/.bashrc )
-then
-  (
-    echo
-    echo
-    echo '# Fix for Vagrant clock skew'
-    echo '#'
-    echo "sudo ntpdate ca.pool.ntp.org"
-  ) | tee -a /home/vagrant/.bashrc
-fi
-
-
-# Pick fastest mirrors
-#
-if(! grep --quiet 'mirror://mirrors' /etc/apt/sources.list )
-then
-  (
-    echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main restricted universe multiverse'; \
-    echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main restricted universe multiverse'; \
-    echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-backports main restricted universe multiverse'; \
-    echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-security main restricted universe multiverse'
-  ) | tee /etc/apt/sources.list
-fi
-
-
-# Update, upgrade and run anything that had been held back (w/ dist-upgrade)
+# Update and install packages
 #
 apt-get update
-apt-get upgrade -y
-apt-get dist-upgrade -y
-
-
-# Install packages
-#
 apt-get install -y \
   build-essential \
   curl \
   git \
-  lynx \
-  mongodb \
-  nodejs \
-  nodejs-legacy \
-  npm \
-  ntp
-
-
-# Fix dependencies and remove unnecessary packages
-#
-apt-get install -f -y
+  lynx
 apt-get autoremove -y
 
 
